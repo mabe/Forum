@@ -1,0 +1,38 @@
+html
+{
+	background:none;	
+}
+
+body
+{
+	background:#DBDABD;
+}
+
+#page
+{
+	margin:0 auto;
+	width:1024px;
+}
+
+.post 
+{
+	float:left;
+	background:#fff;
+	width:1024px;
+	border-bottom:1px dotted #000000;
+	margin-bottom:1px;
+	padding:11px 5px;
+}
+
+.started
+{
+	float:right;
+}
+
+.status, .views
+{
+	height:38px;
+	width:48px;
+	float:left;
+	text-align:center;
+}

@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{00000000-0000-0000-0000-000000000000}") = "Forum.UI.Web", "src\Forum.UI.Web\Forum.UI.Web.csproj", "{DDE3668B-5E5F-4849-9F79-D974BC7A7F76}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DDE3668B-5E5F-4849-9F79-D974BC7A7F76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDE3668B-5E5F-4849-9F79-D974BC7A7F76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDE3668B-5E5F-4849-9F79-D974BC7A7F76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDE3668B-5E5F-4849-9F79-D974BC7A7F76}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
