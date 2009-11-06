@@ -8,7 +8,7 @@
 		<div class="question">
 			<div>
 				<div class="status">
-					<span><%= question.Answers %></span><br />
+					<span><%= question.Answers.Count %></span><br />
 					<span>answer</span>
 				</div>
 				<div class="views">

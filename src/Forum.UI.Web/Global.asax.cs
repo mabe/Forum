@@ -12,6 +12,7 @@ using System.Configuration;
 using FluentNHibernate.Automapping;
 using System.Reflection;
 using Forum.UI.Web.Models;
+using FluentNHibernate.Conventions.Helpers;
 
 namespace Forum.UI.Web
 {
@@ -38,11 +39,17 @@ namespace Forum.UI.Web
 
 		protected void RegisterNHibernate()
 		{
+			var autmap = AutoMap.Assembly(Assembly.Load("Forum.UI.Web"))
+				.Where(t => t.Namespace == "Forum.UI.Web.Models")
+				.Conventions.Add(DefaultCascade.All());
+			
 			var config = Fluently.Configure()
 				.Database(MsSqlConfiguration.MsSql2005.ConnectionString(x => x.Is(ConfigurationManager.ConnectionStrings["Forum"].ConnectionString)))
-				.Mappings(x => x.AutoMappings.Add(AutoMap.Assembly(Assembly.Load("Forum.UI.Web")).Where(t => t.Namespace == "Forum.UI.Web.Models")))
+				.Mappings(x => x.AutoMappings.Add(autmap))
 				.ExposeConfiguration(x => x.SetProperty("current_session_context_class", "web"))
 				.BuildConfiguration();
+
+			autmap.WriteMappingsTo(@"c:\Files\Mappings\");
 
 			SessionFactory = config.BuildSessionFactory();
 
@@ -54,7 +61,7 @@ namespace Forum.UI.Web
 					session.Dispose();
 			};
 
-			//Install(config);
+			Install(config);
 		}
 
 		private void Install(NHibernate.Cfg.Configuration config)

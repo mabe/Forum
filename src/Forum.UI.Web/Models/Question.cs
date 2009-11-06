@@ -9,9 +9,11 @@ namespace Forum.UI.Web.Models
 	{
 		public virtual long Id { get; set; }
 
-		public virtual int Answers { get; set; }
 		public virtual int Viewed { get; set; }
 		public virtual string Title { get; set; }
+		public virtual string Entry { get; set; }
 		public virtual DateTime Started { get; set; }
+
+		public virtual ICollection<Answer> Answers { get; set; }
 	}
 }
