@@ -13,6 +13,7 @@ using FluentNHibernate.Automapping;
 using System.Reflection;
 using Forum.UI.Web.Models;
 using FluentNHibernate.Conventions.Helpers;
+using Forum.UI.Web.Data.Conventions;
 
 namespace Forum.UI.Web
 {
@@ -41,7 +42,8 @@ namespace Forum.UI.Web
 		{
 			var autmap = AutoMap.Assembly(Assembly.Load("Forum.UI.Web"))
 				.Where(t => t.Namespace == "Forum.UI.Web.Models")
-				.Conventions.Add(DefaultCascade.All());
+				.Conventions
+					.Add(DefaultCascade.All(),new EntryPropertyConvention());
 			
 			var config = Fluently.Configure()
 				.Database(MsSqlConfiguration.MsSql2005.ConnectionString(x => x.Is(ConfigurationManager.ConnectionStrings["Forum"].ConnectionString)))
@@ -57,11 +59,13 @@ namespace Forum.UI.Web
 			this.EndRequest += delegate { 
 				var session = CurrentSessionContext.Unbind(SessionFactory);
 
+				session.Flush();
+
 				if (session != null)
 					session.Dispose();
 			};
 
-			Install(config);
+			//Install(config);
 		}
 
 		private void Install(NHibernate.Cfg.Configuration config)

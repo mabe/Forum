@@ -17,7 +17,7 @@
 				</div>
 			</div>
 			<div class="summary">
-				<h3><a><%= question.Title %></a></h3>
+				<h3><a href="<%= Url.Action("Details", "Question", new { id = question.Id })%>"><%= question.Title %></a></h3>
 				<div class"tags"></div><div class="started"><%= question.Started %></div>
 			</div>
 		</div>

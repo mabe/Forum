@@ -33,7 +33,21 @@ namespace Forum.UI.Web.Data
 
 		public void Save(T obj)
 		{
-			session.SaveOrUpdate(obj);
+			using (var transaction = session.BeginTransaction())
+			{
+				session.SaveOrUpdate(obj);
+
+				try
+				{
+					transaction.Commit();
+				}
+				catch (HibernateException ex)
+				{
+					transaction.Rollback();
+
+					throw ex;
+				}
+			}
 		}
 
 		public void Delete(T obj)

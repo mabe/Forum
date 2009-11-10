@@ -12,6 +12,9 @@
 <div id="page">
 		<div id="header">
 			<h1>Forum</h1>
+			<ul>
+				<li><a href="<%= Url.Action("Create", "Question") %>">Ask Question</a></li>
+			</ul>
 		</div>
 		<div id="content">
 			<asp:ContentPlaceHolder ID="MainContent" runat="server" />
